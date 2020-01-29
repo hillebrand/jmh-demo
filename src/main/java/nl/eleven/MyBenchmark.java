@@ -26,8 +26,12 @@
 package nl.eleven;
 
 import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
+import org.openjdk.jmh.annotations.Measurement;
+import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.logic.BlackHole;
 
+@Warmup(iterations = 3, time = 1)
+@Measurement(iterations = 3, time = 1)
 public class MyBenchmark {
 
     @GenerateMicroBenchmark
