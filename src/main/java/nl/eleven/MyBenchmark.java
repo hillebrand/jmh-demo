@@ -26,14 +26,16 @@
 package nl.eleven;
 
 import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
+import org.openjdk.jmh.logic.BlackHole;
 
 public class MyBenchmark {
 
     @GenerateMicroBenchmark
-    public void testMethod() {
+    public void testMethod(BlackHole blackhole) {
         int a = 1;
         int b = 2;
         int som = a + b;
+        blackhole.consume(som);
     }
 
 }
