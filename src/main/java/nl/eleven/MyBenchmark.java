@@ -25,21 +25,29 @@
 
 package nl.eleven;
 
+import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
 import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.logic.BlackHole;
+import org.openjdk.jmh.runner.RunnerException;
 
+import java.io.IOException;
+
+@Fork(1)
 @Warmup(iterations = 3, time = 1)
 @Measurement(iterations = 3, time = 1)
 public class MyBenchmark {
 
-    @GenerateMicroBenchmark
-    public void testMethod(BlackHole blackhole) {
-        int a = 1;
-        int b = 2;
-        int som = a + b;
-        blackhole.consume(som);
-    }
+	public static void main(String[] args) throws IOException, RunnerException {
+		org.openjdk.jmh.Main.main(args);
+	}
 
+	@GenerateMicroBenchmark
+	public void testMethod(BlackHole blackhole) {
+		int a = 1;
+		int b = 2;
+		int som = a + b;
+		blackhole.consume(som);
+	}
 }
