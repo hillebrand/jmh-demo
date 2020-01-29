@@ -31,7 +31,9 @@ public class MyBenchmark {
 
     @GenerateMicroBenchmark
     public void testMethod() {
-        // place your benchmarked code here
+        int a = 1;
+        int b = 2;
+        int som = a + b;
     }
 
 }
