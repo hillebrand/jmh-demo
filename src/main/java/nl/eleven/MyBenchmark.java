@@ -47,10 +47,12 @@ public class MyBenchmark {
 
 	@GenerateMicroBenchmark
 	public void testMethod(BlackHole blackhole, MyState state) {
-		int a = state.a;
-		int b = state.b;
-		int som = a + b;
-		blackhole.consume(som);
+		for (int i = 0; i < 10; i++) {
+			int a = state.a;
+			int b = state.b;
+			int som = a + b;
+			blackhole.consume(som);
+		}
 	}
 
 	@State(Scope.Benchmark)
