@@ -1,0 +1,1 @@
+![Java CI](https://github.com/hillebrand/jmh-demo/workflows/Java%20CI/badge.svg)
