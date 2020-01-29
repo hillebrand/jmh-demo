@@ -28,6 +28,8 @@ package nl.eleven;
 import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
 import org.openjdk.jmh.annotations.Measurement;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.logic.BlackHole;
 import org.openjdk.jmh.runner.RunnerException;
@@ -44,10 +46,16 @@ public class MyBenchmark {
 	}
 
 	@GenerateMicroBenchmark
-	public void testMethod(BlackHole blackhole) {
-		int a = 1;
-		int b = 2;
+	public void testMethod(BlackHole blackhole, MyState state) {
+		int a = state.a;
+		int b = state.b;
 		int som = a + b;
 		blackhole.consume(som);
+	}
+
+	@State(Scope.Benchmark)
+	public static class MyState {
+		int a = 1;
+		int b = 2;
 	}
 }
